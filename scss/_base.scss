@@ -3,6 +3,14 @@ Base Rules
 	A Base rule is applied to an element using an element selector, a descendent selector, or a child selector, along with any pseudoclasses. It doesn’t include any class or ID selectors. It is defining the default styling for how that element should look in all occurrences on the page.
 */
 
+html {
+    box-sizing: border-box;
+}
+
+*,*:before, *:after {
+    box-sizing: inherit;
+}
+
 body {
     background-color: #fff;
     @include body-font-regular;
@@ -12,11 +20,26 @@ body {
     width: 100%;
 }
 
+
+main , footer[role="contentinfo"] {
+    padding: 0 10px;
+}
+
 img {
     height: auto;
     max-width: 100%;
     //margin: 0;
 }
+
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+figcaption {
+    @include fontSize(14px);
+}
+
 //Start Nav styling
 nav {
     background-color: #fff;
@@ -28,9 +51,9 @@ nav {
     border-top: none;
     margin-left: 10px;
     padding: 4px 10px 6px 10px;
-    position: fixed;
-     
+    position: fixed;   
 }
+
 nav ul {
     list-style-type: none;
     margin: 0;
@@ -58,9 +81,17 @@ a:hover {
     transition: color 350ms linear;
 }
 //Start header styling
+
+
+
 h1, h2, h3{
     @include headline-font;
     line-height: 1;
+}
+
+header h1 {
+    @include fontSize(175px);
+    margin: 0;
 }
 
 article h1 {
@@ -68,4 +99,33 @@ article h1 {
     @include fontSize(66px);
     margin: 48px 0 48px 0;
     text-transform: capitalize;
+}
+
+div {
+    color: $color-title;
+    @include fontSize(50px);
+    @include body-font-bold;
+    margin: 30px 0;
+}
+
+main footer {
+//footer[role="complementary"]{
+    border-top: 1px #989898 solid;
+    border-bottom: 1px #989898 solid;
+    color: #989898;
+    margin: 40px 0;
+    padding: 10px 0;
+    
+}
+
+main footer p {
+    margin: 0;
+}
+
+footer[role="contentinfo"] small {
+    border-top: 1px #989898 solid;
+    display: block;
+    @include fontSize(16px);
+    margin-bottom: 20px;
+    
 }
